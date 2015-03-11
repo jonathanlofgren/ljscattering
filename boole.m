@@ -4,8 +4,6 @@ function integ = boole(fun, a, b, n)
 
 
 x = linspace(a, b, 4*n+1);
-%h = (b-a)/(5*n);
-%c = (b-a)/h
 integ = 0;
 
 for k=1:4:length(x)-1
