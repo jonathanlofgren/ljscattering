@@ -1,7 +1,7 @@
 close all
 clear all
 
-E_range = [0.1 1]; 
+E_range = [2 4]; 
 
 E_vals = logspace(log10(E_range(1)), log10(E_range(2)), 5);
 
@@ -9,7 +9,7 @@ E_vals = logspace(log10(E_range(1)), log10(E_range(2)), 5);
 sigma = 1;
 eps = 1;
 
-b_points = 1000;
+b_points = 100;
 bvals = linspace(0, sigma*3, b_points);
 bvals = bvals(2:end-1);
 
