@@ -1,7 +1,7 @@
 clear all
 close all
 
-Evals = linspace(0.1,3,20);
+Evals = linspace(0.1,3,10);
 b = 1;
 sigma = 1;
 
