@@ -82,15 +82,17 @@ ymax = round(ymax * 10) / 10 + 0.1;
 figure(1)
 %ylim([ymin ymax])
 set(lh1, 'FontSize', 16, 'Location', 'best')
+set(gca, 'FontSize', 16)
 figure(2)
 %ylim([ymin ymax])
 set(lh2, 'FontSize', 16, 'Location', 'best')
+set(gca, 'FontSize', 16)
 
-name1 = ['figs/sq_a_Evals_' num2str(E_vals(1)) '_to_' num2str(E_vals(end)) '_V_' num2str(V) '.eps'];
-name2 = ['figs/sq_n_Evals_' num2str(E_vals(1)) '_to_' num2str(E_vals(end)) '_V_' num2str(V) '.eps'];
+name1 = ['figs/sq_a_Evals_' num2str(E_vals(1)) '_to_' num2str(E_vals(end)) '_V_' num2str(V)];
+name2 = ['figs/sq_n_Evals_' num2str(E_vals(1)) '_to_' num2str(E_vals(end)) '_V_' num2str(V)];
 
 name1 = strrep(name1, '.', ',');
 name2 = strrep(name2, '.', ',');
 
-%saveas(f1, name1, 'epsc');
-%saveas(f2, name2, 'epsc');
+saveas(f1, [name1 '.eps'], 'epsc');
+saveas(f2, [name2 '.eps'], 'epsc');

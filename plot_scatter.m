@@ -17,6 +17,9 @@ b_points = 100;
 bvals = linspace(0, sigma*3, b_points);
 bvals = bvals(2:end-1);
 
+f1 = figure(1);
+f2 = figure(2);
+
 for E=E_vals
     theta = zeros(1, b_points-2);
     
@@ -30,17 +33,35 @@ for E=E_vals
                     abs(grad);
                 
     figure(1)
-    subplot(2,1,1)
     plot(bvals, theta)
     hold on
-    subplot(2,1,2)
+    figure(2)
     plot(b_temp, cross_section)
     hold on
     
     
 end
-subplot(2,1,1)
-legend(num2str(E_vals(1)), num2str(E_vals(2)),num2str(E_vals(3)),num2str(E_vals(4)),num2str(E_vals(5)))
-xlabel('Impact parameter b')
-ylabel('Scattering angle (radians)')
+figure(1)
+lh1 = legend(num2str(E_vals(1)), num2str(E_vals(2)), ...
+             num2str(E_vals(3)),num2str(E_vals(4)), ...
+             num2str(E_vals(5)));
+xlabel('Impact parameter b', 'FontSize', 20)
+ylabel('Scattering angle (radians)', 'FontSize', 20)
+
+set(lh1, 'FontSize', 16, 'Location', 'best')
+set(gca, 'FontSize', 16)
+
+figure(2)
+lh2 = legend(num2str(E_vals(1)), num2str(E_vals(2)), ...
+             num2str(E_vals(3)),num2str(E_vals(4)), ...
+             num2str(E_vals(5)));
+   
+xlabel('Impact parameter b', 'FontSize', 20)
+ylabel('Cross section area', 'FontSize', 20)
+
+set(lh2, 'FontSize', 16, 'Location', 'best')
+set(gca, 'FontSize', 16)
+
+saveas(f1, ['figs/da' '.eps'], 'epsc')
+saveas(f2, ['figs/ca' '.eps'], 'epsc')
 

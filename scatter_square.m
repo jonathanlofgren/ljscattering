@@ -15,5 +15,5 @@ function theta = scatter_square(E, b, V, r_max)
     b2 = gauss_quad(term2, r_min, r_max, n);
     
     
-    theta = 2*b*(b1-b2);  
+    theta = 2*b*(b1-b2);
 end
