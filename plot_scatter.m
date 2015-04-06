@@ -1,11 +1,11 @@
 close all
 clear all
 
-<<<<<<< HEAD
+%<<<<<<< HEAD
 E_range = [2 4]; 
-=======
-E_range = [0.1 100]; 
->>>>>>> 0c67f89afd04bff2c077f11e18888ae4b7921e13
+%=======
+E_range = [0.1 2]; 
+%>>>>>>> 0c67f89afd04bff2c077f11e18888ae4b7921e13
 
 E_vals = logspace(log10(E_range(1)), log10(E_range(2)), 5);
 
@@ -29,12 +29,15 @@ for E=E_vals
                     sin(theta(1+offset:end-offset)) .* ...
                     abs(grad);
                 
+    figure(1)
     subplot(2,1,1)
     plot(bvals, theta)
     hold on
     subplot(2,1,2)
     plot(b_temp, cross_section)
     hold on
+    
+    
 end
 subplot(2,1,1)
 legend(num2str(E_vals(1)), num2str(E_vals(2)),num2str(E_vals(3)),num2str(E_vals(4)),num2str(E_vals(5)))

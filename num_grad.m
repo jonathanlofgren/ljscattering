@@ -1,6 +1,6 @@
 function [b grad] = num_grad(b, theta)
     
-    offset = 2;
+    offset = 1;
     grad = zeros(1, length(theta));
     for i=1+2*offset:length(theta)-2*offset
         grad(i) = 1*theta(i-2*offset) -8*theta(i-1*offset) ...

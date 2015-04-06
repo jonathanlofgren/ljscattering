@@ -3,9 +3,10 @@ clear all
 
 %% parameters
 
-E_range = [10 100]; 
+E_range = [1 100]; 
 
 E_vals = logspace(log10(E_range(1)), log10(E_range(2)), 5);
+E_vals = -E_vals;
 
 % potential parameters
 V = 1;
