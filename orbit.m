@@ -27,14 +27,15 @@ b_res = find_bc(E, r_res, brange, sigma);
 %b_res = r_res * sqrt(E - (4 .* sigma.^12 ./ r_res.^12 - 4 .* sigma.^6 ./ r_res.^6)/E);
 
 figure(1)
-hold on
+subplot(1,2,1)
 a = linspace(0.95,3,100);
 plot(a, f(a))
-
-figure(2)
 hold on
+
+subplot(1,2,2)
 x = linspace(0.1, 1.7, 100);
 plot(x, polyval(p,x))
+hold on
 
 end
 
