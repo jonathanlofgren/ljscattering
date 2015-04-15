@@ -4,7 +4,7 @@ clear all
 %<<<<<<< HEAD
 E_range = [2 4]; 
 %=======
-E_range = [0.1 2]; 
+E_range = [0.1 100]; 
 %>>>>>>> 0c67f89afd04bff2c077f11e18888ae4b7921e13
 
 E_vals = logspace(log10(E_range(1)), log10(E_range(2)), 5);
@@ -13,7 +13,7 @@ E_vals = logspace(log10(E_range(1)), log10(E_range(2)), 5);
 sigma = 1;
 eps = 1;
 
-b_points = 100;
+b_points = 500;
 bvals = linspace(0, sigma*3, b_points);
 bvals = bvals(2:end-1);
 
@@ -30,13 +30,14 @@ for E=E_vals
     offset = (length(bvals)-length(grad)) / 2;
     cross_section = b_temp ./ ...
                     sin(theta(1+offset:end-offset)) .* ...
-                    abs(grad);
+                    1./abs(grad);
                 
     figure(1)
-    plot(bvals, theta)
+    plot(bvals, theta, 'LineWidth', 1)
     hold on
     figure(2)
-    plot(b_temp, cross_section)
+    plot(theta(1+offset:end-offset), cross_section, ...
+            'LineWidth', 1)
     hold on
     
     
@@ -56,12 +57,12 @@ lh2 = legend(num2str(E_vals(1)), num2str(E_vals(2)), ...
              num2str(E_vals(3)),num2str(E_vals(4)), ...
              num2str(E_vals(5)));
    
-xlabel('Impact parameter b', 'FontSize', 20)
+xlabel('Deflection angle', 'FontSize', 20)
 ylabel('Cross section area', 'FontSize', 20)
 
 set(lh2, 'FontSize', 16, 'Location', 'best')
 set(gca, 'FontSize', 16)
 
-saveas(f1, ['figs/da' '.eps'], 'epsc')
-saveas(f2, ['figs/ca' '.eps'], 'epsc')
+%saveas(f1, ['figs/da' '.eps'], 'epsc')
+%saveas(f2, ['figs/ca' '.eps'], 'epsc')
 
