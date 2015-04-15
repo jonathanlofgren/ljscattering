@@ -3,7 +3,7 @@ clear all
 
 %% parameters
 
-E_range = [10 100]; 
+E_range = [1.1 3]; 
 
 E_vals = logspace(log10(E_range(1)), log10(E_range(2)), 5);
 
@@ -55,5 +55,22 @@ legend(num2str(E_vals(1)), num2str(E_vals(2)),num2str(E_vals(3)),num2str(E_vals(
 xlabel('Impact parameter b')
 ylabel('Scattering angle (radians)')
 
+figure(3)
+Ee = 2;
+theta_normal = zeros(1, b_points-2);
+theta_half_anal = zeros(1, b_points-2);
+for i=1:length(bvals)
+    theta_normal(i) = scatter_square(E, bvals(i), V, r_max); 
+    theta_half_anal(i) = scatter_square(E, bvals(i), V, r_max, 0);
+end
 
+plot(bvals, theta_normal, bvals, theta_half_anal);
+legend('Both terms numerically','First term analytically')
+xlabel('Impact parameter b')
+ylabel('Scattering angle (radians)')
 
+figure(4)
+diff = abs(theta_normal-theta_half_anal);
+plot(bvals, diff)
+xlabel('Impact parameter b')
+ylabel('Absolute value of error')

@@ -1,11 +1,7 @@
 close all
 clear all
 
-<<<<<<< HEAD
-E_range = [2 4]; 
-=======
 E_range = [0.1 100]; 
->>>>>>> 0c67f89afd04bff2c077f11e18888ae4b7921e13
 
 E_vals = logspace(log10(E_range(1)), log10(E_range(2)), 5);
 
@@ -13,7 +9,7 @@ E_vals = logspace(log10(E_range(1)), log10(E_range(2)), 5);
 sigma = 1;
 eps = 1;
 
-b_points = 100;
+b_points = 1000;
 bvals = linspace(0, sigma*3, b_points);
 bvals = bvals(2:end-1);
 
@@ -23,21 +19,26 @@ for E=E_vals
     for i=1:length(bvals)
        theta(i) = scatter(E, bvals(i), sigma, eps); 
     end
-    [b_temp grad] = num_grad(bvals, theta);
+    
+    [b_temp, grad] = num_grad(bvals, theta);
     offset = (length(bvals)-length(grad)) / 2;
     cross_section = b_temp ./ ...
                     sin(theta(1+offset:end-offset)) .* ...
-                    abs(grad);
+                    1./abs(grad);
                 
-    subplot(2,1,1)
+    figure(1)
+    hold on
     plot(bvals, theta)
+    figure(2)
     hold on
-    subplot(2,1,2)
-    plot(b_temp, cross_section)
-    hold on
+    plot(theta(1+offset:end-offset), cross_section, 'LineWidth', 2)
 end
-subplot(2,1,1)
+figure(1)
+ylim([-4 4])
 legend(num2str(E_vals(1)), num2str(E_vals(2)),num2str(E_vals(3)),num2str(E_vals(4)),num2str(E_vals(5)))
 xlabel('Impact parameter b')
 ylabel('Scattering angle (radians)')
+figure(2)
+legend(num2str(E_vals(1)), num2str(E_vals(2)),num2str(E_vals(3)),num2str(E_vals(4)),num2str(E_vals(5)))
+
 
