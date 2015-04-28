@@ -1,6 +1,6 @@
 function val = trap_quad(fun, a, b, n)
     
-x = linspace(a, b, n+1);
+x = linspace(a, b, n);
 val = 0;
 
 for i=1:length(x)-1
